@@ -18,6 +18,10 @@ class Game:
         
         Returns: none
         """
+        with open(file,"r",encoding = "utf-8") as f:
+             for line in f:
+                 line.split("\t")
+            
     def total_score():
         """This will take the average score from each of the Cipher objects and return that value
         
@@ -83,9 +87,11 @@ def main(file):
                     run the object's play() method
 
     Args: file (String): the filepath
-        
+            
     """
-    print("")
+    with open(file,"r",encoding = "utf-8") as f:
+         for line in f:
+            print("")
                 
 
 
