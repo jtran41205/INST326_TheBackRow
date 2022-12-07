@@ -63,7 +63,7 @@ class Game:
     """
     Attributes: a list of Cipher objects. These Cipher objects will contain several strings detailing important parts of the game
     """
-    words = list()
+    lines = list()
     def __init__(self, file):
         """This will take in a file path to a text file containing various sentences. 
         Each sentence will have a "key=x" at the end
@@ -77,9 +77,9 @@ class Game:
         """
         with open(file,"r",encoding = "utf-8") as f:
             for line in f:
-                self.words.append(Cipher(line))
+                self.lines.append(Cipher(line))
             
-    def total_score():
+    def total_score(self):
         """This will take the average score from each of the Cipher objects and return that value
         
         Args:
@@ -88,7 +88,7 @@ class Game:
         Returns: the total score (int)
         """
         pass
-    def play():
+    def play(self):
         """Loop through the list. For each Cipher object, display the encrypted string 
             and prompt the user to try and write the original string. 
             The score for each guess will be displayed after the input (displayed as a percent score out of 100)
@@ -100,6 +100,13 @@ class Game:
         
         Returns: none
         """
+    def demo(self):
+        """this is a method that exists purely to demo the project as presentation. 
+        It exists for archival, but has no bearing on the final project
+        """
+        for line in self.lines:
+            print(line.encryption)
+            
         
         
         
@@ -119,9 +126,11 @@ class Cipher:
         
         runs the encrypt method to initialize the encrypted string
         """
-        self.answer = re.search(r"(.+)Key=\b([1-9]|1[0-9]|2[0-6])\b", line).group(1)
-        self.key = re.search(r"(.+)Key=\b([1-9]|1[0-9]|2[0-6])\b", line).group(2)
+        self.answer = re.search(r"(.+)Key=\b([1-9]|1[0-9]|2[0-6])\b", line).group(0)
+        temp = re.search(r".+Key=\b([1-9]|1[0-9]|2[0-6])\b", line).group(1)
+        self.key = int(temp)
         self.encryption = ""
+        self.encrypt()
         self.score = 0.0
         
     def encrypt(self):
@@ -131,15 +140,18 @@ class Cipher:
         """
         case = 0
         for character in range(0, len(self.answer)):
-            if self.answer.index(character).islower():
+            if self.answer[character].islower() == True:
                 case = 1
                 
-            original = ALPHABET[self.answer.index(character)] 
-            shift = original - self.key
-            if self.key < 0:
-                shift += 26
+            if self.answer[character].isalpha() == True:
+                original = ALPHABET[self.answer[character]] 
+                shift = original - self.key
+                if shift < 0:
+                    shift += 26
             
-            self.encryption += POSITION[shift][case]
+                self.encryption += POSITION[shift][case]
+            else:
+                self.encryption += self.answer[character]
             
     def set_score(self, answer):
         """ Reads in the player's score and returns the percentage they got correct rounded down and displayed as an int
@@ -172,8 +184,8 @@ def main(file):
             
     """
     game = Game(file)
-    game.play()
-                 
+    game.demo()
+    
                 
 
 
