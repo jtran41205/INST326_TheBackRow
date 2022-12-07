@@ -16,7 +16,7 @@ This project is a guessing game. Here's how it works:
    For example:
 
    String in file: "Fire! Key=3"
-   The string will be read into the game as "These Nuts!"
+   The string will be read into the game as "Fire!"
    The key will be "3", which will shift the characters 3 to the left
    altered string: "Cfob!"
 
@@ -32,4 +32,5 @@ This could probably have an easier explanation, so let me know if I need to clar
 
 important links to read:
 https://en.wikipedia.org/wiki/ROT13
+
 https://en.wikipedia.org/wiki/Caesar_cipher
