@@ -20,7 +20,7 @@ This project is a guessing game. Here's how it works:
    The key will be "3", which will shift the characters 3 to the left
    altered string: "Cfob!"
 
-3) The user will be prompted to type a string to try and match the original text
+3) The user will be prompted to type a string to try and match the original text. 
    Due to high margins of error, they'll be graded on a percentage of how much
    they typed correctly, rather than a binary right or wrong.
 
