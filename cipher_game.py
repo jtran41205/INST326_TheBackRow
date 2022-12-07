@@ -156,10 +156,11 @@ class Cipher:
         if len(self.answer) != len(answer):
             self.score = 0
             print("incorrect length")
-            return self.score
+
         for character in range(0, len(answer)):
             if self.answer.lower().index(character) == answer.lower().index(character):
                 attempt += 1
+        self.score = (attempt/total) * 100
 
 def main(file):
     """
