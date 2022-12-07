@@ -137,9 +137,11 @@ class Cipher:
         """ an encryption method that takes the key int  and shifts the answer string
         
         Side effects: initializes the encrypted string using the key.
+        
+        Returns: none
         """
-        case = 0
         for character in range(0, len(self.answer)):
+            case = 0
             if self.answer[character].islower() == True:
                 case = 1
                 
