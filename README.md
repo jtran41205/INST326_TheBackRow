@@ -15,10 +15,10 @@ This project is a guessing game. Here's how it works:
 
    For example:
 
-   String in file: "These Nuts! Key=left 3"
+   String in file: "Fire! Key=3"
    The string will be read into the game as "These Nuts!"
-   The key will be "left 3", which will shift the characters 3 to the left
-   altered string: "Qebpb Krqp!"
+   The key will be "3", which will shift the characters 3 to the left
+   altered string: "Cfob!"
 
 3) The user will be prompted to type a string to try and match the original text
    Due to high margins of error, they'll be graded on a percentage of how much
