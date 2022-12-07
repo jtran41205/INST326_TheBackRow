@@ -171,13 +171,9 @@ def main(file):
     Args: file (String): the filepath
             
     """
-    with open(file,"r",encoding = "utf-8") as f:
-         game = Game(file)
-         game.play()
-         
-       
-            
-    print("")
+    game = Game(file)
+    game.play()
+                 
                 
 
 
