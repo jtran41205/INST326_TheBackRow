@@ -130,6 +130,7 @@ class Game:
         
         Returns: none
         """
+        
     def demo(self):
         """this is a method that exists purely to demo the project as presentation. 
         It exists for archival, but has no bearing on the final project
@@ -156,8 +157,8 @@ class Cipher:
         
         runs the encrypt method to initialize the encrypted string
         """
-        self.answer = re.search(r"(.+)\b([1-9]|1[0-9]|2[0-6])\b", line).group(0)
-        temp = re.search(r".+Key=\b([1-9]|1[0-9]|2[0-6])\b", line).group(1)
+        self.answer = re.search(r"(.+)\b([1-9]|1[0-9]|2[0-6])\b", line).group(1)
+        temp = re.search(r"(.+)Key=\b([1-9]|1[0-9]|2[0-6])\b", line).group(2)
         self.key = int(temp)
         self.encryption = ""
         self.encrypt()
