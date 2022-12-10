@@ -26,3 +26,5 @@ Speed up.Key=23
 Slow down.Key=21
 Lets go to the gym.Key=22
 Good Job!Key=26
+Roses are red.Key=6
+The sky is blue.Key=9
