@@ -162,7 +162,7 @@ class Cipher:
         
         runs the encrypt method to initialize the encrypted string
         """
-        self.answer = re.search(r"(.+)\b([1-9]|1[0-9]|2[0-6])\b", line).group(1)
+        self.answer = re.search(r"(.+)Key=\b([1-9]|1[0-9]|2[0-6])\b", line).group(1)
         temp = re.search(r"(.+)Key=\b([1-9]|1[0-9]|2[0-6])\b", line).group(2)
         self.key = int(temp)
         self.encryption = ""
