@@ -130,6 +130,11 @@ class Game:
         
         Returns: none
         """
+        for x in self.lines:
+            print (x,HINTS)
+            user_input = input("Enter your answer: ")
+            print(user_input)
+        
         
     def demo(self):
         """this is a method that exists purely to demo the project as presentation. 
