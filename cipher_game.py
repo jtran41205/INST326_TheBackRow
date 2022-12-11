@@ -185,8 +185,15 @@ class Game:
         """
         for line in self.lines:
             print(line.encryption)
-            
+    def cipher_sort(self, length = 10):
+        """
+        Author: Kobe
+        Demonstrates use of list sorting and optional parameters and use of keyword arguments
         
+        Removes cipher objects from the list whose lengths are less than the given amount.
+        Sorts each cipher in order of length
+        """        
+        pass
         
         
 class Cipher:
