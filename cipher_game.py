@@ -1,7 +1,10 @@
 from argparse import ArgumentParser
 import re
 import sys
-# import whatever allows us to read user input
+
+# Dictionaries
+# POSITION and ALPHABET built by Jill
+# HINTS built by Kassian
 POSITION = {
     0: ["A","a"],
     1: ["B","b"],
@@ -123,6 +126,10 @@ class Game:
         
         Returns: the total score (int)
         """
+        
+        # iterate through self.lines
+        # take the total score of every cipher object in self.lines
+        # divide it by the number of terms in the list, rounded up
         pass
     def play(self):
         """
@@ -139,6 +146,11 @@ class Game:
         
         Returns: none
         """
+        
+        # for each cipher object in self.lines, print the ENCRYPTED string
+        # print the hint associated with that cipher object's key
+        # prompt the user for input
+        # take the user input, and run the current cipher object's set_score method
         for x in self.lines:
             print (x,HINTS)
             user_input = input("Enter your answer: ")
@@ -158,7 +170,6 @@ class Game:
 class Cipher:
     """
     Author: Jill
-    Assistan
     
     Attributes:
         answer (String): A string containing the original string without the "key=x", an encrypted version of the string
@@ -174,9 +185,12 @@ class Cipher:
         
         runs the encrypt method to initialize the encrypted string
         """
+        # save the string up to the "Key=" part of the string as the answer
         self.answer = re.search(r"(.+)Key=\b([1-9]|1[0-9]|2[0-6])\b", line).group(1)
+        # save the number at the end as an int
         temp = re.search(r"(.+)Key=\b([1-9]|1[0-9]|2[0-6])\b", line).group(2)
         self.key = int(temp)
+        # this is built upon later as part of the encrypt method
         self.encryption = ""
         self.encrypt()
         self.score = 0.0
