@@ -105,6 +105,8 @@ class Game:
         """
         Author: Kassian
         
+        I demonstrated with statements.
+        
         This will take in a file path to a text file containing various sentences. 
         Each sentence will have a "key=x" at the end
         
@@ -143,6 +145,8 @@ class Game:
     def play(self):
         """
         Author: Kassian
+        
+        I demonstrated the for loop.
         
         Loop through the list. For each Cipher object, display the encrypted string 
             and prompt the user to try and write the original string. 
@@ -257,6 +261,7 @@ class Cipher:
 def main(file):
     """
     Author: Kassian
+    I demonstrated f-strings.
     
     Side effects: instantiates the Game object, which instantiates a list of Cipher objects
                     run the object's play() method
@@ -265,7 +270,8 @@ def main(file):
             
     """
     game = Game(file)
-    game.demo()
+    game.play()
+    print (f"The total score is {game.total_score}. Thanks for playing!")
     
                 
 
