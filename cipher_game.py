@@ -165,9 +165,11 @@ class Game:
         # prompt the user for input
         # take the user input, and run the current cipher object's set_score method
         for x in self.lines:
-            print (x,HINTS)
+            print (f"Encrypted string: {x.encryption}")
+            print (f"Hint: {HINTS[x.key]}")
             user_input = input("Enter your answer: ")
-            print(user_input)
+            x.set_score(user_input)
+            print ("--------------")
         
         
     def demo(self):
