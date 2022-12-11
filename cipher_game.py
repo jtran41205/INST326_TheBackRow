@@ -95,7 +95,10 @@ class Game:
     """
     lines = list()
     def __init__(self, file):
-        """This will take in a file path to a text file containing various sentences. 
+        """
+        Author: Kassian
+        
+        This will take in a file path to a text file containing various sentences. 
         Each sentence will have a "key=x" at the end
         
         Side effects: reads lines from a file and uses them to create an instance of a Cipher object to add to a list.
@@ -110,7 +113,10 @@ class Game:
                 self.lines.append(Cipher(line))
             
     def total_score(self):
-        """This will take the average score from each of the Cipher objects and return that value
+        """
+        Author:
+        
+        This will take the average score from each of the Cipher objects and return that value
         
         Args:
             none
@@ -119,7 +125,10 @@ class Game:
         """
         pass
     def play(self):
-        """Loop through the list. For each Cipher object, display the encrypted string 
+        """
+        Author: Kassian
+        
+        Loop through the list. For each Cipher object, display the encrypted string 
             and prompt the user to try and write the original string. 
             The score for each guess will be displayed after the input (displayed as a percent score out of 100)
             it will calculate score at the end using each cipher object's individual set_score methods
@@ -148,6 +157,9 @@ class Game:
         
 class Cipher:
     """
+    Author: Jill
+    Assistan
+    
     Attributes:
         answer (String): A string containing the original string without the "key=x", an encrypted version of the string
         encryption (String): the encrypted String
@@ -170,7 +182,11 @@ class Cipher:
         self.score = 0.0
         
     def encrypt(self):
-        """ an encryption method that takes the key int  and shifts the answer string
+        """
+        Author: Jill
+        Assistance: Prince
+        
+        an encryption method that takes the key int  and shifts the answer string
         
         Side effects: initializes the encrypted string using the key.
         
@@ -192,7 +208,10 @@ class Cipher:
                 self.encryption += self.answer[character]
             
     def set_score(self, answer):
-        """ Reads in the player's score and returns the percentage they got correct rounded down and displayed as an int
+        """
+        Author: Jill
+        
+        Reads in the player's score and returns the percentage they got correct rounded down and displayed as an int
         
         Args: 
             answer (String): the player's input
@@ -214,6 +233,7 @@ class Cipher:
 
 def main(file):
     """
+    Author: Kassian
     
     Side effects: instantiates the Game object, which instantiates a list of Cipher objects
                     run the object's play() method
@@ -228,7 +248,10 @@ def main(file):
 
 
 def parse_args(arglist):
-    """Parse command line arguments.
+    """
+    Author:Jill
+    
+    Parse command line arguments.
     
     Args:
         arglist (list of str): arguments from the command line.
