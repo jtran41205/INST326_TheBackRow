@@ -1,0 +1,6 @@
+How are you?Key=6
+Pay Attention.Key=24
+You Suck at this!Key=11
+Who is laughing at me?Key=15
+You're slow as a turtle.Key=7
+Attack Him.Key=1
