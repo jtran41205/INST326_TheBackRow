@@ -146,7 +146,7 @@ class Game:
         """
         Author: Kassian
         
-        I demonstrated the for loop.
+        I demonstrated the for loop statement.
         
         Loop through the list. For each Cipher object, display the encrypted string 
             and prompt the user to try and write the original string. 
@@ -173,7 +173,9 @@ class Game:
         
         
     def demo(self):
-        """this is a method that exists purely to demo the project as presentation. 
+        """
+        Author: Jill
+        this is a method that exists purely to demo the project as presentation. 
         It exists for archival, but has no bearing on the final project
         """
         for line in self.lines:
@@ -264,7 +266,7 @@ class Cipher:
 def main(file):
     """
     Author: Kassian
-    I demonstrated f-strings.
+    I demonstrated f-strings and implemented game file.
     
     Side effects: instantiates the Game object, which instantiates a list of Cipher objects
                     run the object's play() method
