@@ -125,6 +125,8 @@ class Game:
         """
         Author: Prince
         
+        I demonstrated the total score.
+        
         This will take the average score from each of the Cipher objects and return that value
         
         Args:
