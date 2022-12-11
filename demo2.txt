@@ -1,0 +1,6 @@
+I took a quick walk down the road.Key=5
+I am strong like Hulk.Key=8
+We need your help.Key=9
+Too Slow!Key=12
+Excuse Me.Key=10
+Break a leg!Key=14
