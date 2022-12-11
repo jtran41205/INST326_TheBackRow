@@ -239,7 +239,7 @@ class Cipher:
     def set_score(self, answer):
         """
         Author: Jill
-        Assitance: Prince assited Jill with conditional expressions
+        Assitance: Prince assisted Jill with conditional expressions
         Reads in the player's score and returns the percentage they got correct rounded down and displayed as an int
         
         Args: 
