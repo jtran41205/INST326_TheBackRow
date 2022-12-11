@@ -1,7 +1,12 @@
+"""A game called Caesar Cipher which is a guessing game."""
+
 from argparse import ArgumentParser
 import re
 import sys
-# import whatever allows us to read user input
+
+# Dictionaries
+# POSITION and ALPHABET built by Jill
+# HINTS built by Kassian
 POSITION = {
     0: ["A","a"],
     1: ["B","b"],
@@ -59,13 +64,48 @@ ALPHABET = {
     "Y": 24, "y": 24,
     "Z": 25, "z": 25
 }
+
+HINTS = {
+    1: "6 - 5 = ?",
+    2: "3 - 1 = ?",
+    3: "9 - 6 = ?",
+    4: "8 - 4 = ?",
+    5: "10 - 5 = ?",
+    6: "12 - 6 = ?",
+    7: "8 - 1 = ?",
+    8: "16 - 8 = ?",
+    9: "5 + 4 = ?",
+    10: "7 + 3 = ?",
+    11: "3 + 8 = ?",
+    12: "6 + 6 = ?",
+    13: "8 + 5 = ?",
+    14: "7 + 7 = ?",
+    15: "10 + 5 = ?",
+    16: "5 + 11 = ?",
+    17: "10 + 7 = ?",
+    18: "9 + 9 = ?",
+    19: "6 + 13 = ?",
+    20: "10 + 10 = ?",
+    21: "13 + 8 = ?",
+    22: "11 + 11 = ?",
+    23: "13 + 10 = ?",
+    24: "12 + 12 = ?",
+    25: "10 + 15 = ?",
+    26: "13 + 13 = ?"
+}
+
 class Game:
     """
+    Creating a Game class to keep track of all the game instances.
+    
     Attributes: a list of Cipher objects. These Cipher objects will contain several strings detailing important parts of the game
     """
-    words = list()
+    lines = list()
     def __init__(self, file):
-        """This will take in a file path to a text file containing various sentences. 
+        """
+        Author: Kassian
+        
+        This will take in a file path to a text file containing various sentences. 
         Each sentence will have a "key=x" at the end
         
         Side effects: reads lines from a file and uses them to create an instance of a Cipher object to add to a list.
@@ -77,19 +117,34 @@ class Game:
         """
         with open(file,"r",encoding = "utf-8") as f:
             for line in f:
-                self.words.append(Cipher(line))
+                self.lines.append(Cipher(line))
             
-    def total_score():
-        """This will take the average score from each of the Cipher objects and return that value
+    def total_score(self):
+        """
+        Author: Prince
+        
+        This will take the average score from each of the Cipher objects and return that value
         
         Args:
             none
         
         Returns: the total score (int)
         """
-        pass
-    def play():
-        """Loop through the list. For each Cipher object, display the encrypted string 
+        scores = list()
+        for x in self.lines:
+            scores.append(x.score) 
+        total = sum(scores)/len(scores) 
+        return total
+        
+        # iterate through self.lines
+        # take the total score of every cipher object in self.lines
+        # divide it by the number of terms in the list 
+    
+    def play(self):
+        """
+        Author: Kassian
+        
+        Loop through the list. For each Cipher object, display the encrypted string 
             and prompt the user to try and write the original string. 
             The score for each guess will be displayed after the input (displayed as a percent score out of 100)
             it will calculate score at the end using each cipher object's individual set_score methods
@@ -101,10 +156,30 @@ class Game:
         Returns: none
         """
         
+        # for each cipher object in self.lines, print the ENCRYPTED string
+        # print the hint associated with that cipher object's key
+        # prompt the user for input
+        # take the user input, and run the current cipher object's set_score method
+        for x in self.lines:
+            print (x,HINTS)
+            user_input = input("Enter your answer: ")
+            print(user_input)
+        
+        
+    def demo(self):
+        """this is a method that exists purely to demo the project as presentation. 
+        It exists for archival, but has no bearing on the final project
+        """
+        for line in self.lines:
+            print(line.encryption)
+            
+        
         
         
 class Cipher:
     """
+    Author: Jill
+    
     Attributes:
         answer (String): A string containing the original string without the "key=x", an encrypted version of the string
         encryption (String): the encrypted String
@@ -119,30 +194,47 @@ class Cipher:
         
         runs the encrypt method to initialize the encrypted string
         """
+        # save the string up to the "Key=" part of the string as the answer
         self.answer = re.search(r"(.+)Key=\b([1-9]|1[0-9]|2[0-6])\b", line).group(1)
-        self.key = re.search(r"(.+)Key=\b([1-9]|1[0-9]|2[0-6])\b", line).group(2)
+        # save the number at the end as an int
+        temp = re.search(r"(.+)Key=\b([1-9]|1[0-9]|2[0-6])\b", line).group(2)
+        self.key = int(temp)
+        # this is built upon later as part of the encrypt method
         self.encryption = ""
+        self.encrypt()
         self.score = 0.0
         
     def encrypt(self):
-        """ an encryption method that takes the key int  and shifts the answer string
+        """
+        Author: Jill
+        Assistance: Prince
+        
+        an encryption method that takes the key int  and shifts the answer string
         
         Side effects: initializes the encrypted string using the key.
+        
+        Returns: none
         """
-        case = 0
         for character in range(0, len(self.answer)):
-            if self.answer.index(character).islower():
+            case = 0
+            if self.answer[character].islower() == True:
                 case = 1
                 
-            original = ALPHABET[self.answer.index(character)] 
-            shift = original - self.key
-            if self.key < 0:
-                shift += 26
+            if self.answer[character].isalpha() == True:
+                original = ALPHABET[self.answer[character]] 
+                shift = original - self.key
+                if shift < 0:
+                    shift += 26
             
-            self.encryption += POSITION[shift][case]
+                self.encryption += POSITION[shift][case]
+            else:
+                self.encryption += self.answer[character]
             
     def set_score(self, answer):
-        """ Reads in the player's score and returns the percentage they got correct rounded down and displayed as an int
+        """
+        Author: Jill
+        
+        Reads in the player's score and returns the percentage they got correct rounded down and displayed as an int
         
         Args: 
             answer (String): the player's input
@@ -156,13 +248,15 @@ class Cipher:
         if len(self.answer) != len(answer):
             self.score = 0
             print("incorrect length")
-            return self.score
+
         for character in range(0, len(answer)):
             if self.answer.lower().index(character) == answer.lower().index(character):
                 attempt += 1
+        self.score = (attempt/total) * 100
 
 def main(file):
     """
+    Author: Kassian
     
     Side effects: instantiates the Game object, which instantiates a list of Cipher objects
                     run the object's play() method
@@ -170,14 +264,17 @@ def main(file):
     Args: file (String): the filepath
             
     """
-    with open(file,"r",encoding = "utf-8") as f:
-         for line in f:
-            print("")
+    game = Game(file)
+    game.demo()
+    
                 
 
 
 def parse_args(arglist):
-    """Parse command line arguments.
+    """
+    Author:Jill
+    
+    Parse command line arguments.
     
     Args:
         arglist (list of str): arguments from the command line.
