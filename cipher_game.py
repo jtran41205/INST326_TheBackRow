@@ -250,15 +250,16 @@ class Cipher:
             none
         """
         attempt = 0
+        temp = str(answer)
         total = len(self.answer)
-        if len(self.answer) != len(answer):
+        if len(self.answer) != len(temp):
             self.score = 0
             print("incorrect length")
-
-        for character in range(0, len(answer)):
-            if self.answer.lower().index(character) == answer.lower().index(character):
-                attempt += 1
-        self.score = (attempt/total) * 100
+        else:
+            for character in range(0, len(temp)):
+                if self.answer.lower().index(character) == temp.lower().index(character):
+                    attempt += 1
+            self.score = (attempt/total) * 100
 
 def main(file):
     """
