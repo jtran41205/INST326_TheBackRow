@@ -187,6 +187,7 @@ class Game:
 class Cipher:
     """
     Author: Jill
+    Assistance: Kassian assisted with f strings.
     
     Attributes:
         answer (String): A string containing the original string without the "key=x", an encrypted version of the string
