@@ -266,6 +266,7 @@ class Cipher:
 def main(file):
     """
     Author: Kassian
+    Assistnce: Prince assisted with fixing the main method
     I demonstrated f-strings and implemented game file.
     
     Side effects: instantiates the Game object, which instantiates a list of Cipher objects
