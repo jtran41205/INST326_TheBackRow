@@ -1,0 +1,6 @@
+The chicken cross the road.Key=13
+Are you ok?Key=17
+Don't Panic!Key=16
+I'm Batman.Key=19
+Happy Holidays.Key=25
+Merry Christmas!Key=18
