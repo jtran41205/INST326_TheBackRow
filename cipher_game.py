@@ -257,7 +257,7 @@ class Cipher:
             print("incorrect length")
         else:
             for character in range(0, len(temp)):
-                if self.answer.lower().index(character) == temp.lower().index(character):
+                if self.answer[character].lower() == temp[character].lower():
                     attempt += 1
             self.score = (attempt/total) * 100
 
@@ -274,7 +274,8 @@ def main(file):
     """
     game = Game(file)
     game.play()
-    print (f"The total score is {game.total_score}. Thanks for playing!")
+    total = game.total_score()
+    print (f"The total score is {total}. Thanks for playing!")
     
                 
 
