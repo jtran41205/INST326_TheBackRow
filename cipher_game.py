@@ -1,4 +1,4 @@
-"""A game called Caesar Cipher which is a guessing game."""
+"""A guessing game which is based on the Caesar Cipher."""
 
 from argparse import ArgumentParser
 import re
@@ -7,6 +7,8 @@ import sys
 # Dictionaries
 # POSITION and ALPHABET built by Jill
 # HINTS built by Kassian
+
+# each letter of the alphabet has an index. Accounts for upper/lowercase
 POSITION = {
     0: ["A","a"],
     1: ["B","b"],
@@ -36,6 +38,7 @@ POSITION = {
     25: ["Z","z"]
 }
 
+# Each letter of the alphabet (upper and lower case) corresponds to an index
 ALPHABET = {
     "A": 0, "a": 0,
     "B": 1, "b": 1,
@@ -65,6 +68,7 @@ ALPHABET = {
     "Z": 25, "z": 25
 }
 
+# This provides a hint to to the key used to shift the original string
 HINTS = {
     1: "6 - 5 = ?",
     2: "3 - 1 = ?",
@@ -105,7 +109,7 @@ class Game:
         """
         Author: Kassian
         
-        I demonstrated with statements.
+        Kassian demonstrated use of with statements.
         
         This will take in a file path to a text file containing various sentences. 
         Each sentence will have a "key=x" at the end
@@ -132,7 +136,7 @@ class Game:
         Args:
             none
         
-        Returns: the total score (int)
+        Returns: the total score (float)
         """
         scores = list()
         for x in self.lines:
@@ -147,9 +151,8 @@ class Game:
     def play(self):
         """
         Author: Kassian
-        
-        I demonstrated the for loop statement.
-        
+        Kassian demonstrated use of for loops and f-strings
+                
         Loop through the list. For each Cipher object, display the encrypted string 
             and prompt the user to try and write the original string. 
             The score for each guess will be displayed after the input (displayed as a percent score out of 100)
@@ -188,17 +191,20 @@ class Game:
         
 class Cipher:
     """
-    Author: Jill
-    Assistance: Kassian assisted with f strings.
-    
     Attributes:
         answer (String): A string containing the original string without the "key=x", an encrypted version of the string
         encryption (String): the encrypted String
         key (int): this contains the amount to shift the original string.
-        score (int): displayed as a percentage
+        score (float): displayed as a percentage
     """
     def __init__(self, line):
-        """ Because each string is assumed to end with a "key=x" at the end, those will be separated at the beginning
+        """ 
+        Author: Jill, Prince
+        Jill set up the basic structure of the program
+        Prince demonstrated knowledge of regular expressions
+        Prince helped Jill in person, so Jill's commits contains knowledge from Prince.
+        
+        Because each string is assumed to end with a "key=x" at the end, those will be separated at the beginning
             initialize answer based on that. Take 
         
         Side effects: initializes the answer string and a int object for the key to encrypt the string
@@ -219,6 +225,8 @@ class Cipher:
         """
         Author: Jill
         Assistance: Prince
+        Jill demonstrated sequence unpacking for the purposes of the cipher
+        Prince demonstrated proper use of conditional expressions in person.
         
         an encryption method that takes the key int  and shifts the answer string
         
@@ -226,11 +234,15 @@ class Cipher:
         
         Returns: none
         """
+        #loop through the entire string of the answer
         for character in range(0, len(self.answer)):
+            #This is a check to match the case of the original string to the encryption
             case = 0
             if self.answer[character].islower() == True:
                 case = 1
                 
+            #check if the character is alphabetical before doing encryption
+            #shifts characters to the left. If the position ends up negative, add 26 as a means of looping around the alphabet
             if self.answer[character].isalpha() == True:
                 original = ALPHABET[self.answer[character]] 
                 shift = original - self.key
@@ -238,6 +250,7 @@ class Cipher:
                     shift += 26
             
                 self.encryption += POSITION[shift][case]
+            # non alphabetical characters do not need to be shifted    
             else:
                 self.encryption += self.answer[character]
             
@@ -245,6 +258,9 @@ class Cipher:
         """
         Author: Jill
         Assitance: Prince assisted Jill with conditional expressions
+        Prince fixed logical and type errors in Jill's code. 
+        Jill created the skeleton and Prince fleshed it out
+        
         Reads in the player's score and returns the percentage they got correct rounded down and displayed as an int
         
         Args: 
@@ -254,23 +270,28 @@ class Cipher:
         Returns:
             none
         """
+        #checks the number of characters entered
         attempt = 0
         temp = str(answer)
         total = len(self.answer)
+        #if the user does not enter the correct length, they did not get it correct
         if len(self.answer) != len(temp):
             self.score = 0
             print("incorrect length")
+        #for each character the user got correct, add 1 to attempt
         else:
             for character in range(0, len(temp)):
                 if self.answer[character].lower() == temp[character].lower():
                     attempt += 1
+            # displayed as a percentage
             self.score = (attempt/total) * 100
 
 def main(file):
     """
     Author: Kassian
     Assistnce: Prince assisted with fixing the main method
-    I demonstrated f-strings and implemented game file.
+    Kassian demonstrated f-strings.
+    Jill fixed a rounding error
     
     Side effects: instantiates the Game object, which instantiates a list of Cipher objects
                     run the object's play() method
@@ -281,7 +302,8 @@ def main(file):
     game = Game(file)
     game.play()
     total = game.total_score()
-    print (f"The total score is {total}. Thanks for playing!")
+    rounded_total = round(total, 1)
+    print (f"The total score is {rounded_total}. Thanks for playing!")
     
                 
 
@@ -289,6 +311,7 @@ def main(file):
 def parse_args(arglist):
     """
     Author:Jill
+    Demonstrated use of ArgumentParser to read in a file as an input.
     
     Parse command line arguments.
     
