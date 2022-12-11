@@ -1,3 +1,5 @@
+"""A game called Caesar Cipher which is a guessing game."""
+
 from argparse import ArgumentParser
 import re
 import sys
@@ -94,6 +96,8 @@ HINTS = {
 
 class Game:
     """
+    Creating a Game class to keep track of all the game instances.
+    
     Attributes: a list of Cipher objects. These Cipher objects will contain several strings detailing important parts of the game
     """
     lines = list()
