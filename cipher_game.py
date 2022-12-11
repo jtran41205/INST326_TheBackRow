@@ -252,6 +252,7 @@ class Cipher:
 def main(file):
     """
     Author: Kassian
+    I demonstrated f-strings.
     
     Side effects: instantiates the Game object, which instantiates a list of Cipher objects
                     run the object's play() method
@@ -260,7 +261,8 @@ def main(file):
             
     """
     game = Game(file)
-    game.demo()
+    game.play()
+    print (f"The total score is {game.total_score}. Thanks for playing!")
     
                 
 
