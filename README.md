@@ -52,30 +52,23 @@ important links to read:
 ## Methods
 
 - \_\_init\_\_(): takes in a string. Each string will have a "Key=x" at the end, where x is some number
-
-everything BEFORE Key= will be saved into answer. Everything AFTER Key= will be saved to key as an int
-
-encryption is initialized as an empty string. This is important for the encrypt() method.
+   everything BEFORE Key= will be saved into answer. Everything AFTER Key= will be saved to key as an int
+   encryption is initialized as an empty string. This is important for the encrypt() method.
 
 
 score is initialized to 0
 
 - encrypt(): takes in no arguments. It's called as part of the init method
-
-for each character in the answer string, it checks if the character is an alphabetical character. 
-
-If the character is NOT an alphabetical character, it is added to encryption as normal.
-
-If yes, it will use that character and the key to find the shifted version, and add that new letter to encryption
+   for each character in the answer string, it checks if the character is an alphabetical character. 
+   If the character is NOT an alphabetical character, it is added to encryption as normal.
+   
+   If yes, it will use that character and the key to find the shifted version, and add that new letter to encryption
 
 - set_score(): takes in an outside answer string as an argument
-
-If outside answer is not the same length as self.answer, score is zero and print "incorrect length"
-
-
-This is a running total problem. Iterate through each character. If outside answer at that index is equal to self.answer at that index,
-
-add a point. The score will equal (total points/string length)*100
+   If outside answer is not the same length as self.answer, score is zero and print "incorrect length"
+   (Yes this is punishing, check the grammar closely)
+   
+   This is a running total problem. Iterate through each character. If outside answer at that index is equal to self.answer at that index, add a point. The score will equal (total points/string length)*100
 
 
 
@@ -90,5 +83,14 @@ add a point. The score will equal (total points/string length)*100
 - \_\_init\_\_(): this reads in a file path. Each line will be used to create an individual Cipher object, and add it to the list.
 
 - total_score(): this will iterate through self.lines. Takes no arguments. This adds every score from each cipher object,
+   and divides it by the number of cipher objects in the list. This is the total score that is returned.
 
-and divides it by the number of cipher objects in the list. This is the total score that is returned.
+### How to run the program
+
+- This program runs from the command line. It takes a single argument, a filepath
+   ```
+   python cipher_game.py demo.txt
+   ```
+   This program has multiple demo files, 
+   because it can take a very long time to figure out a single question,
+   especially depending on the length of the string and the size of the key
