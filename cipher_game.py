@@ -300,8 +300,7 @@ def main(file):
     game = Game(file)
     game.play()
     total = game.total_score()
-    rounded_total = round(total, 1)
-    print (f"The total score is {rounded_total}. Thanks for playing!")
+    print (f"The total score is {total:.1f}. Thanks for playing!")
     
                 
 
